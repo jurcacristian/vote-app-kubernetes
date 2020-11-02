@@ -6,21 +6,20 @@ metadata:
     name: voting-app-deploy
     app: demo-voting-app
 spec:
-    replicas: 1
-    selector:
-      matchLabels:
-          name: voting-app-pod
-          app: demo-voting-app        
-    template:
-      metadata:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: voting-app-pod
+      app: demo-voting-app
+  template:
+    metadata:
+      name: voting-app-pod
+      labels:
         name: voting-app-pod
-        labels:
-          name: voting-app-pod
-          app: demo-voting-app
-      spec:
-        containers:
-          - name: voting-app
-            image: kodekloud/examplevotingapp_vote:v1
-            ports: 
-              - containerPort: 80
-        
+        app: demo-voting-app
+    spec:
+      containers:
+        - name: voting-app
+          image: kodekloud/examplevotingapp_vote:v1
+          ports:
+            - containerPort: 80
